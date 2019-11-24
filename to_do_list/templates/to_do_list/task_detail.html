@@ -1,0 +1,15 @@
+{% extends 'to_do_list/task_base.html' %}
+{% block content %}
+    {% if user.is_authenticated and task.author == user %}
+        <h2> Task: {{ task.title }} </h2>
+        <h5> Author: {{task.author}} </h5>
+        <p> Description:  {{task.description}} </p>
+        <h4> Status: {{task.get_status_display}} </h4>
+        <h4> Deadline: {{task.deadline}} </h4>
+        <a href="{% url 'to_do_list:task_update' pk=task.pk %}">Edit</a> <br>
+        <a href="{% url 'to_do_list:task_delete' pk=task.pk %}">Delete</a>
+    {% else %}
+        <h3>Whoops</h3>
+    {% endif %}
+
+{% endblock %}

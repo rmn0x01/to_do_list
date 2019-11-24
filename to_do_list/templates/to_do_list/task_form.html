@@ -1,0 +1,10 @@
+{% extends 'to_do_list/task_base.html' %}
+{% block content %}
+    <h1>Task</h1>
+    <form id="taskform" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Post">
+    </form>
+
+{% endblock %}
